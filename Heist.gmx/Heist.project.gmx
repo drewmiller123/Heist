@@ -5,9 +5,79 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprTextBox</sprite>
+    <sprite>sprites\sprMenuButton</sprite>
+    <sprite>sprites\sprReady</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scrDrawTextOutline.gml</script>
+    <scripts name="Saving/Loading">
+      <script>scripts\scrSaveOptions.gml</script>
+      <script>scripts\scrLoadOptions.gml</script>
+    </scripts>
+    <scripts name="Networking">
+      <script>scripts\scrClientReceivedPacket.gml</script>
+      <script>scripts\scrServerReceivedPacket.gml</script>
+      <script>scripts\scrSendError.gml</script>
+      <scripts name="ServerSend">
+        <script>scripts\scrSendReadyUpdate.gml</script>
+        <script>scripts\scrSendNumClients.gml</script>
+      </scripts>
+      <scripts name="ClientSend">
+        <script>scripts\scrClientSendReady.gml</script>
+      </scripts>
+    </scripts>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\fntPing</font>
+    <font>fonts\fntIP</font>
+    <font>fonts\fntUpgrade</font>
+  </fonts>
+  <objects name="objects">
+    <objects name="MenuButtons">
+      <object>objects\objHostButton</object>
+      <object>objects\objLoadMultiGame</object>
+      <object>objects\objJoinButton</object>
+      <object>objects\objNewMultiGame</object>
+      <object>objects\objMainMenuButton</object>
+      <object>objects\objMultiplayerButton</object>
+      <object>objects\objMultiYes</object>
+      <object>objects\objMultiNo</object>
+      <object>objects\objIPButton</object>
+      <object>objects\objReadyButton</object>
+      <object>objects\objHostStartButton</object>
+    </objects>
+    <objects name="Control">
+      <object>objects\objInitialize</object>
+      <object>objects\objFullScreenControl</object>
+      <object>objects\objMultiplayerMenuControl</object>
+      <object>objects\objMainMenuControl</object>
+    </objects>
+    <objects name="Netowrking">
+      <object>objects\objServer</object>
+      <object>objects\objClient</object>
+      <object>objects\objTextBoxIP</object>
+      <object>objects\objTextBoxPort</object>
+      <object>objects\objReady</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rmInitialize</room>
+    <room>rooms\rmMainMenu</room>
+    <room>rooms\rmConnect</room>
+    <room>rooms\rmMultiplayer</room>
+    <room>rooms\rmLobby</room>
+  </rooms>
+  <constants number="5">
+    <constant name="netPing">1</constant>
+    <constant name="netInitialRequest">2</constant>
+    <constant name="netReady">3</constant>
+    <constant name="netError">4</constant>
+    <constant name="netNumClients">5</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
