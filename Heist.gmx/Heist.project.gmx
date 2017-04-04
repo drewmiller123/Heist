@@ -9,6 +9,9 @@
     <sprite>sprites\sprTextBox</sprite>
     <sprite>sprites\sprMenuButton</sprite>
     <sprite>sprites\sprReady</sprite>
+    <sprite>sprites\sprPlayer</sprite>
+    <sprite>sprites\sprRoom</sprite>
+    <sprite>sprites\sprSpace</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -63,6 +66,11 @@
       <object>objects\objTextBoxPort</object>
       <object>objects\objReady</object>
     </objects>
+    <objects name="GameObjects">
+      <object>objects\objPlayer</object>
+      <object>objects\objRoom</object>
+      <object>objects\objSpace</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmInitialize</room>
@@ -70,6 +78,7 @@
     <room>rooms\rmConnect</room>
     <room>rooms\rmMultiplayer</room>
     <room>rooms\rmLobby</room>
+    <room>rooms\rmGame</room>
   </rooms>
   <constants number="5">
     <constant name="netPing">1</constant>
