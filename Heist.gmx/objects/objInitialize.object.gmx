@@ -36,6 +36,11 @@ scrLoadOptions();
 globalvar hosting;
 hosting = false;
 
+
+
+globalvar state;
+state = noone;
+
 globalvar numClients;
 numClients = 0;
 
@@ -44,6 +49,58 @@ mReady[0] = false;
 mReady[1] = false;
 mReady[2] = false;
 mReady[3] = false;
+
+/////////////gameplay variables///////////////////
+globalvar isChief;
+isChief = false;
+
+//this will be used to show which player is the chief
+globalvar chiefPlayer;
+chiefPlayer = noone;
+
+globalvar theif;
+theif[0] = noone;
+theif[1] = noone;
+theif[2] = noone;
+theif[3] = noone;
+
+globalvar security;
+security[0] = noone;
+security[1] = noone;
+security[2] = noone;
+security[3] = noone;
+
+//roomCount will be used to manage connections between rooms
+globalvar roomCount;
+roomCount = 0;
+
+globalvar spaceCount;
+spaceCount = 0;
+
+globalvar spaces;
+spaces = ds_list_create();
+
+globalvar chosenSpace;
+chosenSpace = noone;
+
+globalvar mChosenSpace;
+mChosenSpace[0] = noone;
+mChosenSpace[1] = noone;
+mChosenSpace[2] = noone;
+mChosenSpace[3] = noone;
+
+globalvar chosenCard;
+chosenCard = noone;
+
+//mDone will be used to tell if players have completed all actions for current state
+globalvar mDone;
+mDone[0] = false;
+mDone[1] = false;
+mDone[2] = false;
+mDone[3] = false;
+
+
+//////////////////////////////////////////////////
 
 ///////////////Audio Channels//////////////////
 

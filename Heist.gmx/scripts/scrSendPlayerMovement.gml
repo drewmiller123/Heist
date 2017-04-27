@@ -1,14 +1,17 @@
-///scrSendReadyUpdate();  //send ready update to all clients
+///scrSendPlayer(player, x, y);  //send coordinates to move players to all clients to create
 var count = ds_list_size(objServer.socketList);
+var pNum = argument0;
+var px = argument1;
+var py = argument2;
 
 if(count > 0)
 {
     buffer_seek(objServer.buffer, buffer_seek_start, 0);
-    buffer_write(objServer.buffer, buffer_u8, netReady);
-    buffer_write(objServer.buffer, buffer_bool, mReady[0]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[1]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[2]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[3]);    
+    buffer_write(objServer.buffer, buffer_u8, netMovement);
+    buffer_write(objServer.buffer, buffer_u8, pNum);
+    buffer_write(objServer.buffer, buffer_u16, px);
+    buffer_write(objServer.buffer, buffer_u16, py);
+    
     
     for(j=0;j<count;j++)
     {   

@@ -28,6 +28,13 @@
             <string>depth = 0;
 connectedSpaces = ds_list_create();
 
+//number will be used to identify spaces across clients and server
+number = spaceCount;
+spaceCount++;
+
+ds_list_add(spaces,id);
+
+
 </string>
           </argument>
         </arguments>

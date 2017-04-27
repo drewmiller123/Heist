@@ -23,4 +23,27 @@ switch(msgid)
     case netNumClients:
         numClients = buffer_read(buff, buffer_u8);
     break;
+    case netState:
+        state = buffer_read(buff, buffer_u8);
+    break;
+    case netRoom:
+        //var rmNum = buffer_read(buff, buffer_u8);
+        var rmx = buffer_read(buff, buffer_u16);
+        var rmy = buffer_read(buff, buffer_u16);
+        var rm = instance_create(rmx,rmy,objRoom);        
+    break;
+    case netPlayer:
+        var px = buffer_read(buff, buffer_u16);
+        var py = buffer_read(buff, buffer_u16);
+        var pNum = buffer_read(buff, buffer_u8);
+        theif[pNum] = instance_create(px,py,objPlayer);
+        theif[pNum].player = pNum;
+    break;
+    case netMovement:
+        var p = buffer_read(buff, buffer_u8);
+        var px = buffer_read(buff, buffer_u16);
+        var py = buffer_read(buff, buffer_u16);
+        theif[p].x = px;
+        theif[p].y = py;
+    break;
 }

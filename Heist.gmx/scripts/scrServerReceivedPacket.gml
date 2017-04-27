@@ -32,4 +32,10 @@ switch(msgid)
         mReady[player] = pReady;
         scrSendReadyUpdate();
     break;
+    case netSpace:
+        var pSpaceNum = buffer_read(buff, buffer_u16);
+        var player = ds_list_find_index(ipList,ip)+1;
+        mChosenSpace[player] = ds_list_find_value(spaces,pSpaceNum);
+        mDone[player] = true;
+    break;
 }

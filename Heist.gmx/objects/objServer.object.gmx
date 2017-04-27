@@ -148,7 +148,9 @@ room_goto(rmMainMenu);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>// make host the chief for now
+isChief = true;
+// remove after testing
 
 //Check for client timeout
 for(t = 0; t &lt; numClients; t++)
@@ -165,6 +167,54 @@ for(t = 0; t &lt; numClients; t++)
         }
     }
 }
+
+if(room == rmLobby)
+{
+    state = stateLobby;
+    scrSendState();
+}
+
+//state is set to stateInitial when the host presses the start button
+if(state == stateInitial)
+{
+    if(room == rmGame)
+    {
+        var rm0 = instance_create(view_wview[0]/2, view_hview[0]/2, objRoom);
+        scrSendRoom(rm0);
+        for(i = 0; i &lt;= numClients; i++)
+        {
+            theif[i] = instance_create(0,0,objPlayer);
+            theif[i].player = i;
+            scrSendPlayer(theif[i],i);
+        }
+        
+        
+        state = statePickMovement;
+        scrSendState();
+    }
+    
+}
+
+if(state == statePickCards)
+{
+
+}
+
+if(state == stateExecuteCards)
+{
+
+}
+
+if(state == statePickMovement)
+{
+    scrHostPickMovement();
+}
+
+if(state == stateExecuteMovement)
+{
+    scrHostExecuteMovement();
+}
+
 
 </string>
           </argument>
@@ -312,11 +362,11 @@ ds_list_destroy(socketList);
           <argument>
             <kind>1</kind>
             <string>draw_set_halign(fa_left);
-draw_text(5, 55, "numClients: " + string(numClients));//
-//draw_text(5, 30, "Total Clients: " + string(ds_list_size(socketList)));
-//draw_text(5, 55, "mFireMult[1]: " + string(mFireMult[1]));
-//draw_text(5, 80, "needReady: " + string(needReady));
-//draw_text(5, 105, "MultiplayerGold: " + string(multiplayerGold));
+draw_text(5, 5, "numClients: " + string(numClients));//
+draw_text(5, 30, "mChosenSpace[0]: " + string(mChosenSpace[0]));
+draw_text(5, 55, "mChosenSpace[1]: " + string(mChosenSpace[1]));
+draw_text(5, 80, "theif[0] " + string(theif[0]));
+draw_text(5, 105, "theif[1] " + string(theif[1]));
 
 if(room == rmLobby &amp;&amp; showIP)
 {

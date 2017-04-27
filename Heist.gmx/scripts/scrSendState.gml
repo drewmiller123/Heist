@@ -1,14 +1,12 @@
-///scrSendReadyUpdate();  //send ready update to all clients
+///scrSendState()      updates clients with the current game state
+
 var count = ds_list_size(objServer.socketList);
 
 if(count > 0)
 {
     buffer_seek(objServer.buffer, buffer_seek_start, 0);
-    buffer_write(objServer.buffer, buffer_u8, netReady);
-    buffer_write(objServer.buffer, buffer_bool, mReady[0]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[1]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[2]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[3]);    
+    buffer_write(objServer.buffer, buffer_u8, netState);
+    buffer_write(objServer.buffer, buffer_u8, state);
     
     for(j=0;j<count;j++)
     {   
@@ -20,4 +18,10 @@ if(count > 0)
         network_send_packet(sock,objServer.buffer, buffer_tell(objServer.buffer));   
    
     }
+}
+
+//reset mDone for new state
+for(j = 0; j<=numClients; j++)
+{
+    mDone[j] = false;
 }

@@ -1,14 +1,16 @@
-///scrSendReadyUpdate();  //send ready update to all clients
+///scrSendPlayer(objPlayer, player);  //send room to all clients to create
 var count = ds_list_size(objServer.socketList);
+var p = argument0;
+var pNum = argument1;
 
 if(count > 0)
 {
     buffer_seek(objServer.buffer, buffer_seek_start, 0);
-    buffer_write(objServer.buffer, buffer_u8, netReady);
-    buffer_write(objServer.buffer, buffer_bool, mReady[0]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[1]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[2]);
-    buffer_write(objServer.buffer, buffer_bool, mReady[3]);    
+    buffer_write(objServer.buffer, buffer_u8, netPlayer);
+    //buffer_write(objServer.buffer, buffer_u8, rm.number);
+    buffer_write(objServer.buffer, buffer_u16, p.x);
+    buffer_write(objServer.buffer, buffer_u16, p.y);
+    buffer_write(objServer.buffer, buffer_u8, pNum);
     
     for(j=0;j<count;j++)
     {   

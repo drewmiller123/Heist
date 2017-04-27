@@ -176,7 +176,37 @@ alarm[2] = 30;//ping ever half second
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>
+if(state == stateInitial)
+{
+    if(room != rmGame)
+    {
+        room_goto(rmGame);
+    }
+}
+if(state == statePickCards)
+{
+
+}
+
+if(state == stateExecuteCards)
+{
+
+}
+
+if(state == statePickMovement)
+{
+    scrClientPickMovement();
+}
+
+if(state == stateExecuteMovement)
+{
+
+}
+
+
+
+</string>
           </argument>
         </arguments>
       </action>
@@ -262,10 +292,10 @@ scrDrawTextOutline("Ping: " + string(ping), view_wview[0] -32, 8,c_white,c_black
 draw_set_font(fntUpgrade);
 draw_set_halign(fa_left);
 
-draw_text(5, 55, "numClients: " + string(numClients));//
-//draw_text(5, 80, "SubState: " + string(subState));//
-//draw_text(5, 105, "RemoteIP " + IPAddress);//
-//draw_text(5, 130, "RemotePort " + string(remotePort));//
+draw_text(5, 30, "numClients: " + string(numClients));//
+draw_text(5, 55, "state: " + string(state));//
+draw_text(5, 80, "theif[0] " + string(theif[0]));
+draw_text(5, 105, "theif[1] " + string(theif[1]));
 
 
 if(errMsg != "")
