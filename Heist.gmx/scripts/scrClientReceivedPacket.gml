@@ -25,6 +25,12 @@ switch(msgid)
     break;
     case netState:
         state = buffer_read(buff, buffer_u8);
+        //the initial state wasn't lasting a full step, so the step event
+            //wasn't seeing it to change rooms
+        if(state == stateInitial)
+        {
+            room_goto(rmGame);
+        }
     break;
     case netRoom:
         //var rmNum = buffer_read(buff, buffer_u8);
@@ -43,7 +49,12 @@ switch(msgid)
         var p = buffer_read(buff, buffer_u8);
         var px = buffer_read(buff, buffer_u16);
         var py = buffer_read(buff, buffer_u16);
-        theif[p].x = px;
-        theif[p].y = py;
+        mChosenSpace[p] = instance_position(px,py,objSpace);
+        //theif[p].x = px;
+        TweenFire(theif[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].x, px);
+        //theif[p].y = py;
+        TweenFire(theif[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].y, py);
+        
+        theif[p].currentSpace = mChosenSpace[p];
     break;
 }
