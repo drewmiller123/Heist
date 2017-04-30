@@ -53,6 +53,8 @@ roomType[2] = objRoom3Left;
 roomType[3] = objRoom3Right;
 roomType[4] = objRoom4;
 roomType[5] = objRoom2;
+roomType[6] = objRoom1;
+roomType[7] = objHallway;
 
 globalvar mReady;
 mReady[0] = false;

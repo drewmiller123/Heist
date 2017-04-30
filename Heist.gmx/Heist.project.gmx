@@ -13,6 +13,7 @@
     <sprite>sprites\sprReady</sprite>
     <sprite>sprites\sprPlayer</sprite>
     <sprite>sprites\sprRoom</sprite>
+    <sprite>sprites\sprHallway</sprite>
     <sprite>sprites\sprSpace</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -137,6 +138,8 @@
         <object>objects\objRoom3Right</object>
         <object>objects\objRoom4</object>
         <object>objects\objRoom2</object>
+        <object>objects\objRoom1</object>
+        <object>objects\objHallway</object>
       </objects>
       <object>objects\objSpace</object>
     </objects>
