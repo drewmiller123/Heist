@@ -33,10 +33,10 @@ switch(msgid)
         }
     break;
     case netRoom:
-        //var rmNum = buffer_read(buff, buffer_u8);
+        var type = buffer_read(buff, buffer_u8);
         var rmx = buffer_read(buff, buffer_u16);
         var rmy = buffer_read(buff, buffer_u16);
-        var rm = instance_create(rmx,rmy,objRoom);        
+        var rm = instance_create(rmx,rmy,roomType[type]);        
     break;
     case netPlayer:
         var px = buffer_read(buff, buffer_u16);

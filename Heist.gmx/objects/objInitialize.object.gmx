@@ -44,6 +44,16 @@ state = noone;
 globalvar numClients;
 numClients = 0;
 
+//roomType will be used for communication
+    //between client and server for room creation
+globalvar roomType;
+roomType[0] = objRoom3Up;
+roomType[1] = objRoom3Down;
+roomType[2] = objRoom3Left;
+roomType[3] = objRoom3Right;
+roomType[4] = objRoom4;
+roomType[5] = objRoom2;
+
 globalvar mReady;
 mReady[0] = false;
 mReady[1] = false;

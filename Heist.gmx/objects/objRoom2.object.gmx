@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>objRoom</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>depth = 1;
-numSpaces = 4;
+type = 5;
 space[0] = noone;
 
 connectedRooms = ds_list_create();
@@ -34,41 +34,14 @@ connectedRooms = ds_list_create();
 number = roomCount;
 roomCount++;
 
-//using this to create the spaces within the rooms
-event_perform(ev_other, ev_user0);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(numSpaces == 4)
-{
-    space[0] = instance_create(x - sprite_width/4, y - sprite_height/4, objSpace);
-    space[1] = instance_create(x + sprite_width/4, y - sprite_height/4, objSpace);
-    space[2] = instance_create(x - sprite_width/4, y + sprite_height/4, objSpace);
-    space[3] = instance_create(x + sprite_width/4, y + sprite_height/4, objSpace);
-    ds_list_add(space[0].connectedSpaces,space[1],space[2]);
-    ds_list_add(space[1].connectedSpaces,space[0],space[3]);
-    ds_list_add(space[2].connectedSpaces,space[0],space[3]);
-    ds_list_add(space[3].connectedSpaces,space[1],space[2]);
-}
+
+space[0] = instance_create(x - sprite_width/3, y, objSpace);
+space[1] = instance_create(x + sprite_width/3, y, objSpace);
+
+ds_list_add(space[0].connectedSpaces,space[1]);
+ds_list_add(space[1].connectedSpaces,space[0]);
+
+
 </string>
           </argument>
         </arguments>

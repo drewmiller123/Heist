@@ -6,7 +6,7 @@ if(count > 0)
 {
     buffer_seek(objServer.buffer, buffer_seek_start, 0);
     buffer_write(objServer.buffer, buffer_u8, netRoom);
-    //buffer_write(objServer.buffer, buffer_u8, rm.number);
+    buffer_write(objServer.buffer, buffer_u8, rm.type);
     buffer_write(objServer.buffer, buffer_u16, rm.x);
     buffer_write(objServer.buffer, buffer_u16, rm.y);
     

@@ -179,8 +179,16 @@ if(state == stateInitial)
 {
     if(room == rmGame)
     {
-        var rm0 = instance_create(view_wview[0]/2, view_hview[0]/2, objRoom);
+        var rm0 = instance_create(room_width/4, room_height/2, objRoom3Up);
         scrSendRoom(rm0);
+        var rm1 = instance_create(room_width/2, room_height/2, objRoom3Down);
+        scrSendRoom(rm1);
+        var rm2 = instance_create(room_width*3/4, room_height/2, objRoom3Left);
+        scrSendRoom(rm2);
+        var rm3 = instance_create(room_width*1/3, room_height*3/4, objRoom3Right);
+        scrSendRoom(rm3);
+        var rm4 = instance_create(room_width*2/3, room_height*3/4, objRoom4);
+        scrSendRoom(rm4);
         for(i = 0; i &lt;= numClients; i++)
         {
             theif[i] = instance_create(0,0,objPlayer);

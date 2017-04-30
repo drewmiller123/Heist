@@ -90,6 +90,7 @@ if(escape)
     {
         instance_destroy();
     }
+    hosting = false;
     room_goto(rmMainMenu);
 }
 

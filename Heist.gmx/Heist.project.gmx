@@ -129,7 +129,15 @@
     </objects>
     <objects name="GameObjects">
       <object>objects\objPlayer</object>
-      <object>objects\objRoom</object>
+      <objects name="RoomObjects">
+        <object>objects\objRoom</object>
+        <object>objects\objRoom3Up</object>
+        <object>objects\objRoom3Down</object>
+        <object>objects\objRoom3Left</object>
+        <object>objects\objRoom3Right</object>
+        <object>objects\objRoom4</object>
+        <object>objects\objRoom2</object>
+      </objects>
       <object>objects\objSpace</object>
     </objects>
     <objects name="TweenGMS">
