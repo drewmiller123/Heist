@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>depth = 0;
 connectedSpaces = ds_list_create();
+connectedDucts = ds_list_create();
 
 //number will be used to identify spaces across clients and server
 number = spaceCount;
@@ -62,6 +63,13 @@ ds_list_add(spaces,id);
     var tSpace = ds_list_find_value(connectedSpaces,i);
     draw_line(x,y,tSpace.x,tSpace.y);
 }
+
+for(i = 0; i &lt; ds_list_size(connectedDucts); i++)
+{
+    var tSpace = ds_list_find_value(connectedDucts,i);
+    draw_line_color(x,y,tSpace.x,tSpace.y,c_blue,c_blue);
+}
+
 draw_self();
 </string>
           </argument>

@@ -103,8 +103,9 @@ else
         mReady[2] = false;
         mReady[3] = false;
         //scrMultiplayerSave();
-        state = stateInitial;
-        scrSendState();
+        //state = stateInitial;
+        state = stateStart;
+        scrSendStart();
         room_goto(rmGame);
     }
 }

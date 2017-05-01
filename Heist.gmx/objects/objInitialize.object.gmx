@@ -86,6 +86,9 @@ security[3] = noone;
 globalvar roomCount;
 roomCount = 0;
 
+globalvar rooms;
+rooms = ds_list_create();
+
 globalvar spaceCount;
 spaceCount = 0;
 

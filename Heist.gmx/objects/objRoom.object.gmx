@@ -35,7 +35,7 @@ number = roomCount;
 roomCount++;
 
 //using this to create the spaces within the rooms
-event_perform(ev_other, ev_user0);
+//event_perform(ev_other, ev_user0);
 </string>
           </argument>
         </arguments>

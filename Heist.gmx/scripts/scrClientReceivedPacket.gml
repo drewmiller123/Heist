@@ -27,10 +27,10 @@ switch(msgid)
         state = buffer_read(buff, buffer_u8);
         //the initial state wasn't lasting a full step, so the step event
             //wasn't seeing it to change rooms
-        if(state == stateInitial)
+        /*if(state == stateInitial)
         {
             room_goto(rmGame);
-        }
+        }*/
     break;
     case netRoom:
         var type = buffer_read(buff, buffer_u8);
@@ -56,5 +56,15 @@ switch(msgid)
         TweenFire(theif[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].y, py);
         
         theif[p].currentSpace = mChosenSpace[p];
+    break;
+    case netConnectRooms:
+        scrConnectRooms();
+    break;
+    case netStartGame:
+        room_goto(rmGame);
+        
+        buffer_seek(buffer, buffer_seek_start,0);
+        buffer_write(buffer, buffer_u8,netStartGame);
+        network_send_packet(objClient.socket, objClient.buffer, buffer_tell(objClient.buffer));
     break;
 }

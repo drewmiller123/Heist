@@ -174,8 +174,26 @@ if(room == rmLobby)
     scrSendState();
 }
 
-//state is set to stateInitial when the host presses the start button
-if(state == stateInitial)
+if(state == stateStart)
+{
+    mDone[0] = true;
+    var allReady = true;
+    for(i = 0; i&lt;=numClients; i++)
+    {
+        if(!mDone[i])
+        {
+            allReady = false;
+        }
+    }
+    
+    if(allReady)
+    {
+        state = stateInitial;
+        scrSendState();
+    }
+}
+
+else if(state == stateInitial)
 {
     if(room == rmGame)
     {
@@ -214,6 +232,8 @@ if(state == stateInitial)
         
         var hw3 = instance_create(room_width/2, room_height*5/16, objHallway);
         scrSendRoom(hw3);
+        
+        
 
 
         for(i = 0; i &lt;= numClients; i++)
@@ -224,28 +244,38 @@ if(state == stateInitial)
         }
         
         
-        state = statePickMovement;
+        state = stateInitial2;
         scrSendState();
     }
     
 }
 
-if(state == statePickCards)
+else if(state == stateInitial2)
+{
+    //populate connected rooms
+    scrConnectRooms();
+    scrConnectClientRooms();
+    
+    state = statePickMovement;
+    scrSendState();
+}
+
+else if(state == statePickCards)
 {
 
 }
 
-if(state == stateExecuteCards)
+else if(state == stateExecuteCards)
 {
 
 }
 
-if(state == statePickMovement)
+else if(state == statePickMovement)
 {
     scrHostPickMovement();
 }
 
-if(state == stateExecuteMovement)
+else if(state == stateExecuteMovement)
 {
     scrHostExecuteMovement();
 }

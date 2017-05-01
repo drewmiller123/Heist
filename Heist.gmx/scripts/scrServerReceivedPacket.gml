@@ -38,4 +38,8 @@ switch(msgid)
         mChosenSpace[player] = ds_list_find_value(spaces,pSpaceNum);
         mDone[player] = true;
     break;
+    case netStartGame:
+        var player = ds_list_find_index(ipList,ip)+1;
+        mDone[player] = true;
+    break;
 }
