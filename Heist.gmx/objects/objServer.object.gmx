@@ -272,11 +272,33 @@ else if(state == stateExecuteCards)
 
 else if(state == statePickMovement)
 {
+    with(objSpace)
+    {
+        if(instance_exists(theif[0].currentSpace))
+        {
+            if(instance_exists(chosenSpace) &amp;&amp; chosenSpace == id)
+            {
+                sprite_index = sprChosenSpace;
+            }
+            else if(ds_list_find_index(theif[0].currentSpace.connectedSpaces, id) != -1)
+            {
+                sprite_index = sprAvailableSpace;
+            }
+            else
+            {
+                sprite_index = sprSpace;
+            }
+        }
+    }
     scrHostPickMovement();
 }
 
 else if(state == stateExecuteMovement)
 {
+    with(objSpace)
+    {
+        sprite_index = sprSpace;
+    }
     scrHostExecuteMovement();
 }
 

@@ -15,6 +15,8 @@
     <sprite>sprites\sprRoom</sprite>
     <sprite>sprites\sprHallway</sprite>
     <sprite>sprites\sprSpace</sprite>
+    <sprite>sprites\sprAvailableSpace</sprite>
+    <sprite>sprites\sprChosenSpace</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -33,6 +35,7 @@
         <script>scripts\scrSendNumClients.gml</script>
         <script>scripts\scrSendRoom.gml</script>
         <script>scripts\scrSendPlayer.gml</script>
+        <script>scripts\scrSendPlayerNumber.gml</script>
         <script>scripts\scrSendPlayerMovement.gml</script>
         <script>scripts\scrSendState.gml</script>
         <script>scripts\scrSendStart.gml</script>
@@ -168,7 +171,7 @@
     <room>rooms\rmLobby</room>
     <room>rooms\rmGame</room>
   </rooms>
-  <constants number="24">
+  <constants number="25">
     <constant name="netPing">1</constant>
     <constant name="netInitialRequest">2</constant>
     <constant name="netReady">3</constant>
@@ -181,6 +184,7 @@
     <constant name="netMovement">10</constant>
     <constant name="netConnectRooms">11</constant>
     <constant name="netStartGame">12</constant>
+    <constant name="netPlayerNumber">13</constant>
     <constant name="stateLobby">100</constant>
     <constant name="stateStart">101</constant>
     <constant name="stateInitial">102</constant>

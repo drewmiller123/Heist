@@ -55,7 +55,7 @@ numPlayerSprites = 0;
 
 ping = noone;
 
-player = 0;
+//player = 0;
 ready = false;
 
 

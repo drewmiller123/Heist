@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>depth = 0;
+image_speed = .25;
 connectedSpaces = ds_list_create();
 connectedDucts = ds_list_create();
 

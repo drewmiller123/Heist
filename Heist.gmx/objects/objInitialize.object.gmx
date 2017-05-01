@@ -36,7 +36,8 @@ scrLoadOptions();
 globalvar hosting;
 hosting = false;
 
-
+globalvar playerNumber;
+playerNumber = 0;
 
 globalvar state;
 state = noone;

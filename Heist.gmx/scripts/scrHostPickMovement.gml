@@ -9,9 +9,21 @@ var hoverSpace = instance_position(mouse_x,mouse_y,objSpace);
 
 if(leftClicked && instance_exists(hoverSpace))
 {
-    chosenSpace = hoverSpace;
-    mChosenSpace[0] = chosenSpace;
-    mDone[0] = true;
+    if(instance_exists(theif[0].currentSpace))
+    {
+        if(ds_list_find_index(theif[0].currentSpace.connectedSpaces, hoverSpace) != -1 || hoverSpace == theif[0].currentSpace)
+        {
+            chosenSpace = hoverSpace;
+            mChosenSpace[0] = chosenSpace;
+            mDone[0] = true;
+        }
+    }
+    else
+    {
+        chosenSpace = hoverSpace;
+        mChosenSpace[0] = chosenSpace;
+        mDone[0] = true;
+    }
 }
 
 

@@ -10,6 +10,9 @@ switch(msgid)
         ping = current_time - time;
         serverTimeout = 300;
     break;
+    case netPlayerNumber:
+        playerNumber = buffer_read(buff, buffer_u8);
+    break;
     case netReady:
         mReady[0] = buffer_read(buff, buffer_bool);
         mReady[1] = buffer_read(buff, buffer_bool);

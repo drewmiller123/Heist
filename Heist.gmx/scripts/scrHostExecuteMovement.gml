@@ -15,6 +15,7 @@ for(i = 0; i <= numClients; i++)
     scrSendPlayerMovement(i,mChosenSpace[i].x,mChosenSpace[i].y);
     mChosenSpace[i] = noone;
 }
+chosenSpace = noone;
 
 //if(allReady == true)
 //{

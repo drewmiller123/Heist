@@ -25,6 +25,11 @@ switch(msgid)
             alarm[0] = 180;
             scrSendError();
         }
+        else
+        {
+            var player = ds_list_find_index(ipList,ip)+1;
+            scrSendPlayerNumber(player);
+        }
     break;
     case netReady:
         var pReady = buffer_read(buff, buffer_bool);
