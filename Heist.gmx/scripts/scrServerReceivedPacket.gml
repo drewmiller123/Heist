@@ -38,10 +38,23 @@ switch(msgid)
         scrSendReadyUpdate();
     break;
     case netSpace:
+        var cNum = ds_list_find_index(ipList,ip)+1;
+        var player = buffer_read(buff,buffer_u8);
         var pSpaceNum = buffer_read(buff, buffer_u16);
-        var player = ds_list_find_index(ipList,ip)+1;
-        mChosenSpace[player] = ds_list_find_value(spaces,pSpaceNum);
-        mDone[player] = true;
+        var sFlag = buffer_read(buff, buffer_bool);
+        if(sFlag)
+        {
+            mSecurityChosenSpace[player] = ds_list_find_value(spaces,pSpaceNum);
+            if(player == numClients)
+            {
+                mDone[cNum] = true;
+            }
+        }
+        else
+        {
+            mChosenSpace[player] = ds_list_find_value(spaces,pSpaceNum);
+            mDone[player] = true;
+        }
     break;
     case netStartGame:
         var player = ds_list_find_index(ipList,ip)+1;

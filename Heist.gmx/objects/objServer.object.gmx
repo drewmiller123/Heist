@@ -67,7 +67,6 @@ showIP = false;
 
 drawCounter = 0;
 
-
 </string>
           </argument>
         </arguments>
@@ -144,9 +143,7 @@ room_goto(rmMainMenu);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// make host the chief for now
-isChief = true;
-// remove after testing
+            <string>
 
 //Check for client timeout
 for(t = 0; t &lt; numClients; t++)
@@ -450,10 +447,10 @@ ds_list_destroy(socketList);
             <kind>1</kind>
             <string>draw_set_halign(fa_left);
 draw_text(5, 5, "numClients: " + string(numClients));//
-draw_text(5, 30, "currentSecurity " + string(currentSecurity));
+draw_text(5, 30, "isChief " + string(isChief));
+draw_text(5, 55, "chiefPlayer: " + string(chiefPlayer));
 if(instance_exists(security[1]))
 {
-draw_text(5, 55, "donePicking[0]: " + string(security[0].donePicking));
 draw_text(5, 80, "donePicking[1]: " + string(security[1].donePicking));
 }
 draw_text(5, 105, "mDone[0] " + string(mDone[0]));
@@ -543,10 +540,10 @@ if(state == statePickMovement)
     }
     else
     {
-        if(instance_exists(currentSpace) &amp;&amp; instance_exists(chosenSpace))
+        if(instance_exists(theif[playerNumber].currentSpace) &amp;&amp; instance_exists(chosenSpace))
             {
-                var x1 = currentSpace.x;
-                var y1 = currentSpace.y;
+                var x1 = theif[playerNumber].currentSpace.x;
+                var y1 = theif[playerNumber].currentSpace.y;
                 var x2 = chosenSpace.x;
                 var y2 = chosenSpace.y;
                 draw_sprite_ext(sprMovementArrow,drawCounter div 4,x1,y1,point_distance(x1,y1,x2,y2)/sprite_get_width(sprMovementArrow),1,point_direction(x1,y1,x2,y2),c_white,1);

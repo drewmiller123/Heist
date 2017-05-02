@@ -79,16 +79,18 @@ switch(msgid)
             mSecurityChosenSpace[p] = instance_position(px,py,objSpace);
             TweenFire(security[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p+30*(numClients+1), 30, security[p].x, mSecurityChosenSpace[p].x);
             TweenFire(security[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p+30*(numClients+1), 30, security[p].y, mSecurityChosenSpace[p].y);
+            
+            security[p].currentSpace = mSecurityChosenSpace[p];
+            mSecurityChosenSpace[p] = noone;
         }
         else
         {
             mChosenSpace[p] = instance_position(px,py,objSpace);
-            //theif[p].x = px;
             TweenFire(theif[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].x, px);
-            //theif[p].y = py;
             TweenFire(theif[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].y, py);
             
             theif[p].currentSpace = mChosenSpace[p];
+            mChosenSpace[p] = noone;
         }
     break;
     case netConnectRooms:

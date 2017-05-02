@@ -46,6 +46,7 @@
       </scripts>
       <scripts name="ClientSend">
         <script>scripts\scrClientSendReady.gml</script>
+        <script>scripts\scrSendSecurityChosenSpace.gml</script>
         <script>scripts\scrSendChosenSpace.gml</script>
       </scripts>
     </scripts>
@@ -57,6 +58,7 @@
       </scripts>
       <scripts name="ClientScripts">
         <script>scripts\scrClientPickMovement.gml</script>
+        <script>scripts\scrClientPickSecurityMovement.gml</script>
       </scripts>
       <script>scripts\scrHighlightMovement.gml</script>
     </scripts>

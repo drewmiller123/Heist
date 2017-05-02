@@ -36,6 +36,8 @@ chosenSpace = noone;
 //if(allReady == true)
 //{
     //currently only testing movement
+
     state = statePickMovement;
     scrSendState();
+
 //}
