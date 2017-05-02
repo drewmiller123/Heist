@@ -39,6 +39,9 @@ ds_list_add(rooms,id);
 space[0] = instance_create(x - sprite_width/3, y, objSpace);
 space[1] = instance_create(x + sprite_width/3, y, objSpace);
 
+space[0].roomNumber = number;
+space[1].roomNumber = number;
+
 ds_list_add(space[0].connectedSpaces,space[1]);
 ds_list_add(space[1].connectedSpaces,space[0]);
 

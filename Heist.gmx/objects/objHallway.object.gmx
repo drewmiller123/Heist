@@ -38,6 +38,7 @@ ds_list_add(rooms,id);
 
 space[0] = instance_create(x, y, objSpace);
 
+space[0].roomNumber = number;
 
 top = space[0];
 left = space[0];

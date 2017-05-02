@@ -28,6 +28,8 @@
             <string>depth = -1;
 image_speed = 0;
 player = 0;
+marked = false;
+captured = false;
 currentSpace = noone;
 </string>
           </argument>
@@ -52,6 +54,11 @@ currentSpace = noone;
           <argument>
             <kind>1</kind>
             <string>image_index = player;
+
+if(instance_exists(currentSpace))
+{
+    currentRoom = currentSpace.roomNumber;
+}
 
 /*if(mouse_check_button_pressed(mb_left))
 {

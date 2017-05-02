@@ -1,17 +1,12 @@
-///scrSendPlayer(objPlayer, player);  //send room to all clients to create
+///scrSendChiefPlayer()      tells clients which player is the chief
+
 var count = ds_list_size(objServer.socketList);
-var p = argument0;
-var pNum = argument1;
-var sFlag = argument2;
 
 if(count > 0)
 {
     buffer_seek(objServer.buffer, buffer_seek_start, 0);
-    buffer_write(objServer.buffer, buffer_u8, netPlayer);
-    buffer_write(objServer.buffer, buffer_u16, p.x);
-    buffer_write(objServer.buffer, buffer_u16, p.y);
-    buffer_write(objServer.buffer, buffer_u8, pNum);
-    buffer_write(objServer.buffer, buffer_bool, sFlag);
+    buffer_write(objServer.buffer, buffer_u8, netChiefPlayer);
+    buffer_write(objServer.buffer, buffer_u8, chiefPlayer);
     
     for(j=0;j<count;j++)
     {   
@@ -23,4 +18,10 @@ if(count > 0)
         network_send_packet(sock,objServer.buffer, buffer_tell(objServer.buffer));   
    
     }
+}
+
+//reset mDone for new state
+for(j = 0; j<=numClients; j++)
+{
+    mDone[j] = false;
 }

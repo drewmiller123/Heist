@@ -3,6 +3,7 @@ var count = ds_list_size(objServer.socketList);
 var pNum = argument0;
 var px = argument1;
 var py = argument2;
+var sFlag = argument3;
 
 if(count > 0)
 {
@@ -11,6 +12,7 @@ if(count > 0)
     buffer_write(objServer.buffer, buffer_u8, pNum);
     buffer_write(objServer.buffer, buffer_u16, px);
     buffer_write(objServer.buffer, buffer_u16, py);
+    buffer_write(objServer.buffer, buffer_bool, sFlag);
     
     
     for(j=0;j<count;j++)

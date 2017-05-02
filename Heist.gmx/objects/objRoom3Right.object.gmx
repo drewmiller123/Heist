@@ -41,6 +41,10 @@ space[0] = instance_create(x - sprite_width/6, y-sprite_height/(6)*sqrt(3), objS
 space[1] = instance_create(x + sprite_width/3, y, objSpace);
 space[2] = instance_create(x - sprite_width/6, y+sprite_height/(6)*sqrt(3), objSpace);
 
+space[0].roomNumber = number;
+space[1].roomNumber = number;
+space[2].roomNumber = number;
+
 ds_list_add(space[0].connectedSpaces,space[1],space[2]);
 ds_list_add(space[1].connectedSpaces,space[0],space[2]);
 ds_list_add(space[2].connectedSpaces,space[0],space[1]);

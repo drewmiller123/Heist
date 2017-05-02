@@ -65,12 +65,8 @@ async_event = http_get( "http://ipv4bot.whatismyipaddress.com/" );
 myIP = "";
 showIP = false;
 
-//lobbyCounter = 0;
+drawCounter = 0;
 
-//reticle[0] = noone;
-//reticle[1] = noone;
-//reticle[2] = noone;
-//reticle[3] = noone;
 
 </string>
           </argument>
@@ -238,9 +234,22 @@ else if(state == stateInitial)
 
         for(i = 0; i &lt;= numClients; i++)
         {
-            theif[i] = instance_create(0,0,objPlayer);
-            theif[i].player = i;
-            scrSendPlayer(theif[i],i);
+            if(i == chiefPlayer)
+            {
+                for(c = 0; c&lt;= numClients; c++)
+                {
+                    security[securityCount] = instance_create(0,0,objSecurity);
+                    security[securityCount].player = i;                    
+                    scrSendPlayer(security[securityCount],i,true);
+                    securityCount++;
+                }
+            }
+            else
+            {
+                theif[i] = instance_create(0,0,objTheif);
+                theif[i].player = i;
+                scrSendPlayer(theif[i],i,false);
+            }
         }
         
         
@@ -272,25 +281,16 @@ else if(state == stateExecuteCards)
 
 else if(state == statePickMovement)
 {
-    with(objSpace)
+    
+    if(isChief)
     {
-        if(instance_exists(theif[0].currentSpace))
-        {
-            if(instance_exists(chosenSpace) &amp;&amp; chosenSpace == id)
-            {
-                sprite_index = sprChosenSpace;
-            }
-            else if(ds_list_find_index(theif[0].currentSpace.connectedSpaces, id) != -1)
-            {
-                sprite_index = sprAvailableSpace;
-            }
-            else
-            {
-                sprite_index = sprSpace;
-            }
-        }
+        scrHostPickSecurityMovement();
     }
-    scrHostPickMovement();
+    else
+    {
+        scrHostPickMovement();
+    }
+    scrHighlightMovement();
 }
 
 else if(state == stateExecuteMovement)
@@ -450,10 +450,13 @@ ds_list_destroy(socketList);
             <kind>1</kind>
             <string>draw_set_halign(fa_left);
 draw_text(5, 5, "numClients: " + string(numClients));//
-draw_text(5, 30, "mChosenSpace[0]: " + string(mChosenSpace[0]));
-draw_text(5, 55, "mChosenSpace[1]: " + string(mChosenSpace[1]));
-draw_text(5, 80, "theif[0] " + string(theif[0]));
-draw_text(5, 105, "theif[1] " + string(theif[1]));
+draw_text(5, 30, "currentSecurity " + string(currentSecurity));
+if(instance_exists(security[1]))
+{
+draw_text(5, 55, "donePicking[0]: " + string(security[0].donePicking));
+draw_text(5, 80, "donePicking[1]: " + string(security[1].donePicking));
+}
+draw_text(5, 105, "mDone[0] " + string(mDone[0]));
 
 if(room == rmLobby &amp;&amp; showIP)
 {
@@ -469,6 +472,87 @@ if(errMsg != "")
     draw_set_halign(fa_left);
 }
 
+/*drawCounter++;
+if(state == statePickMovement)
+{
+    if(isChief)
+    {
+        for(i=0; i&lt;=numClients; i++)
+        {
+            if(instance_exists(security[i].currentSpace) &amp;&amp; instance_exists(mSecurityChosenSpace[i]))
+            {
+                var x1 = security[i].currentSpace.x;
+                var y1 = security[i].currentSpace.y;
+                var x2 = mSecurityChosenSpace[i].x;
+                var y2 = mSecurityChosenSpace[i].y;
+                draw_sprite_ext(sprMovementArrow,drawCounter div 4,x1,y1,point_distance(x1,y1,x2,y2)/sprite_get_width(sprMovementArrow),1,point_direction(x1,y1,x2,y2),c_white,1);
+            }
+        }
+    }
+    else
+    {
+        if(instance_exists(currentSpace) &amp;&amp; instance_exists(chosenSpace))
+            {
+                var x1 = currentSpace.x;
+                var y1 = currentSpace.y;
+                var x2 = chosenSpace.x;
+                var y2 = chosenSpace.y;
+                draw_sprite_ext(sprMovementArrow,drawCounter div 4,x1,y1,point_distance(x1,y1,x2,y2)/sprite_get_width(sprMovementArrow),1,point_direction(x1,y1,x2,y2),c_white,1);
+            }
+    }
+}*/
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>drawCounter++;
+if(state == statePickMovement)
+{
+    if(isChief)
+    {
+        for(i=0; i&lt;=numClients; i++)
+        {
+            if(instance_exists(security[i].currentSpace) &amp;&amp; instance_exists(mSecurityChosenSpace[i]))
+            {
+                var x1 = security[i].currentSpace.x;
+                var y1 = security[i].currentSpace.y;
+                var x2 = mSecurityChosenSpace[i].x;
+                var y2 = mSecurityChosenSpace[i].y;
+                draw_sprite_ext(sprMovementArrow,drawCounter div 4,x1,y1,point_distance(x1,y1,x2,y2)/sprite_get_width(sprMovementArrow),1,point_direction(x1,y1,x2,y2),c_white,1);
+            }
+        }
+    }
+    else
+    {
+        if(instance_exists(currentSpace) &amp;&amp; instance_exists(chosenSpace))
+            {
+                var x1 = currentSpace.x;
+                var y1 = currentSpace.y;
+                var x2 = chosenSpace.x;
+                var y2 = chosenSpace.y;
+                draw_sprite_ext(sprMovementArrow,drawCounter div 4,x1,y1,point_distance(x1,y1,x2,y2)/sprite_get_width(sprMovementArrow),1,point_direction(x1,y1,x2,y2),c_white,1);
+            }
+    }
+}
 </string>
           </argument>
         </arguments>

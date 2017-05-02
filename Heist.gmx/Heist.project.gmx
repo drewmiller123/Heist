@@ -12,6 +12,8 @@
     <sprite>sprites\sprMenuButton</sprite>
     <sprite>sprites\sprReady</sprite>
     <sprite>sprites\sprPlayer</sprite>
+    <sprite>sprites\sprSecurity</sprite>
+    <sprite>sprites\sprMovementArrow</sprite>
     <sprite>sprites\sprRoom</sprite>
     <sprite>sprites\sprHallway</sprite>
     <sprite>sprites\sprSpace</sprite>
@@ -40,6 +42,7 @@
         <script>scripts\scrSendState.gml</script>
         <script>scripts\scrSendStart.gml</script>
         <script>scripts\scrConnectClientRooms.gml</script>
+        <script>scripts\scrSendChiefPlayer.gml</script>
       </scripts>
       <scripts name="ClientSend">
         <script>scripts\scrClientSendReady.gml</script>
@@ -49,11 +52,13 @@
     <scripts name="GameFlow">
       <scripts name="HostScripts">
         <script>scripts\scrHostPickMovement.gml</script>
+        <script>scripts\scrHostPickSecurityMovement.gml</script>
         <script>scripts\scrHostExecuteMovement.gml</script>
       </scripts>
       <scripts name="ClientScripts">
         <script>scripts\scrClientPickMovement.gml</script>
       </scripts>
+      <script>scripts\scrHighlightMovement.gml</script>
     </scripts>
     <scripts name="Initialization">
       <script>scripts\scrConnectRooms.gml</script>
@@ -130,6 +135,7 @@
       <object>objects\objIPButton</object>
       <object>objects\objReadyButton</object>
       <object>objects\objHostStartButton</object>
+      <object>objects\objChiefButton</object>
     </objects>
     <objects name="Control">
       <object>objects\objInitialize</object>
@@ -145,7 +151,8 @@
       <object>objects\objReady</object>
     </objects>
     <objects name="GameObjects">
-      <object>objects\objPlayer</object>
+      <object>objects\objTheif</object>
+      <object>objects\objSecurity</object>
       <objects name="RoomObjects">
         <object>objects\objRoom</object>
         <object>objects\objRoom3Up</object>
@@ -171,7 +178,7 @@
     <room>rooms\rmLobby</room>
     <room>rooms\rmGame</room>
   </rooms>
-  <constants number="25">
+  <constants number="26">
     <constant name="netPing">1</constant>
     <constant name="netInitialRequest">2</constant>
     <constant name="netReady">3</constant>
@@ -185,6 +192,7 @@
     <constant name="netConnectRooms">11</constant>
     <constant name="netStartGame">12</constant>
     <constant name="netPlayerNumber">13</constant>
+    <constant name="netChiefPlayer">14</constant>
     <constant name="stateLobby">100</constant>
     <constant name="stateStart">101</constant>
     <constant name="stateInitial">102</constant>

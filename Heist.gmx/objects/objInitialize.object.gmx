@@ -65,11 +65,11 @@ mReady[3] = false;
 
 /////////////gameplay variables///////////////////
 globalvar isChief;
-isChief = false;
+isChief = true; //this is set to false in objClient create event so that host is default chief
 
 //this will be used to show which player is the chief
 globalvar chiefPlayer;
-chiefPlayer = noone;
+chiefPlayer = 0;
 
 globalvar theif;
 theif[0] = noone;
@@ -82,6 +82,12 @@ security[0] = noone;
 security[1] = noone;
 security[2] = noone;
 security[3] = noone;
+
+globalvar securityCount;
+securityCount = 0;
+
+globalvar currentSecurity;
+currentSecurity = noone;
 
 //roomCount will be used to manage connections between rooms
 globalvar roomCount;
@@ -104,6 +110,12 @@ mChosenSpace[0] = noone;
 mChosenSpace[1] = noone;
 mChosenSpace[2] = noone;
 mChosenSpace[3] = noone;
+
+globalvar mSecurityChosenSpace;
+mSecurityChosenSpace[0] = noone;
+mSecurityChosenSpace[1] = noone;
+mSecurityChosenSpace[2] = noone;
+mSecurityChosenSpace[3] = noone;
 
 globalvar chosenCard;
 chosenCard = noone;

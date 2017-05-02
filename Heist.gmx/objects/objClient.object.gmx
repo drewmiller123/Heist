@@ -76,7 +76,7 @@ paused = false;
 serverTimeout = 300;
 errMsg = "";
 
-
+isChief = false;
 </string>
           </argument>
         </arguments>

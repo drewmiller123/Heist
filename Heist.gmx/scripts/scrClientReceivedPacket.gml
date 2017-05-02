@@ -13,6 +13,17 @@ switch(msgid)
     case netPlayerNumber:
         playerNumber = buffer_read(buff, buffer_u8);
     break;
+    case netChiefPlayer:
+        chiefPlayer = buffer_read(buff, buffer_u8);
+        if(chiefPlayer == playerNumber)
+        {
+            isChief = true;
+        }
+        else
+        {
+            isChief = false;
+        }
+    break;
     case netReady:
         mReady[0] = buffer_read(buff, buffer_bool);
         mReady[1] = buffer_read(buff, buffer_bool);
@@ -45,20 +56,40 @@ switch(msgid)
         var px = buffer_read(buff, buffer_u16);
         var py = buffer_read(buff, buffer_u16);
         var pNum = buffer_read(buff, buffer_u8);
-        theif[pNum] = instance_create(px,py,objPlayer);
-        theif[pNum].player = pNum;
+        var sFlag = buffer_read(buff, buffer_bool);
+        if(sFlag)
+        {
+            security[securityCount] = instance_create(px,py,objSecurity);
+            security[securityCount].player = pNum;
+            securityCount++;
+        }
+        else
+        {
+            theif[pNum] = instance_create(px,py,objTheif);
+            theif[pNum].player = pNum;
+        }
     break;
     case netMovement:
         var p = buffer_read(buff, buffer_u8);
         var px = buffer_read(buff, buffer_u16);
         var py = buffer_read(buff, buffer_u16);
-        mChosenSpace[p] = instance_position(px,py,objSpace);
-        //theif[p].x = px;
-        TweenFire(theif[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].x, px);
-        //theif[p].y = py;
-        TweenFire(theif[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].y, py);
-        
-        theif[p].currentSpace = mChosenSpace[p];
+        var sFlag = buffer_read(buff, buffer_bool);
+        if(sFlag)
+        {
+            mSecurityChosenSpace[p] = instance_position(px,py,objSpace);
+            TweenFire(security[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p+30*(numClients+1), 30, security[p].x, mSecurityChosenSpace[p].x);
+            TweenFire(security[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p+30*(numClients+1), 30, security[p].y, mSecurityChosenSpace[p].y);
+        }
+        else
+        {
+            mChosenSpace[p] = instance_position(px,py,objSpace);
+            //theif[p].x = px;
+            TweenFire(theif[p], x__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].x, px);
+            //theif[p].y = py;
+            TweenFire(theif[p], y__, EaseInOutQuad, TWEEN_MODE_ONCE, false, 30*p, 30, theif[p].y, py);
+            
+            theif[p].currentSpace = mChosenSpace[p];
+        }
     break;
     case netConnectRooms:
         scrConnectRooms();
