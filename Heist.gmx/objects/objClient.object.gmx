@@ -188,7 +188,13 @@ if(state == stateInitial)
 }
 if(state == statePickCards)
 {
-
+    for(i=0;i&lt;ds_list_size(playerHand[playerNumber])i++)
+    {
+        var tCard = ds_list_find_value(playerHand[playerNumber],i);
+        tCard.x = view_wview[0]-sprite_get_width(sprMiniCard)*(i+1);
+        tCard.y = view_hview[0]-sprite_get_height(sprMiniCard);  
+        tCard.visible = true;     
+    }
 }
 
 if(state == stateExecuteCards)

@@ -19,6 +19,8 @@
     <sprite>sprites\sprSpace</sprite>
     <sprite>sprites\sprAvailableSpace</sprite>
     <sprite>sprites\sprChosenSpace</sprite>
+    <sprite>sprites\sprCard</sprite>
+    <sprite>sprites\sprMiniCard</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -43,6 +45,7 @@
         <script>scripts\scrSendStart.gml</script>
         <script>scripts\scrConnectClientRooms.gml</script>
         <script>scripts\scrSendChiefPlayer.gml</script>
+        <script>scripts\scrSendCard.gml</script>
       </scripts>
       <scripts name="ClientSend">
         <script>scripts\scrClientSendReady.gml</script>
@@ -55,6 +58,7 @@
         <script>scripts\scrHostPickMovement.gml</script>
         <script>scripts\scrHostPickSecurityMovement.gml</script>
         <script>scripts\scrHostExecuteMovement.gml</script>
+        <script>scripts\scrDrawCards.gml</script>
       </scripts>
       <scripts name="ClientScripts">
         <script>scripts\scrClientPickMovement.gml</script>
@@ -63,6 +67,9 @@
       <script>scripts\scrHighlightMovement.gml</script>
     </scripts>
     <scripts name="Initialization">
+      <script>scripts\scrCreateRooms.gml</script>
+      <script>scripts\scrCreatePlayers.gml</script>
+      <script>scripts\scrCreateCardDecks.gml</script>
       <script>scripts\scrConnectRooms.gml</script>
       <script>scripts\scrConnectUpperLeft.gml</script>
       <script>scripts\scrConnectUpperRight.gml</script>
@@ -167,6 +174,7 @@
         <object>objects\objHallway</object>
       </objects>
       <object>objects\objSpace</object>
+      <object>objects\objCard</object>
     </objects>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
@@ -180,7 +188,7 @@
     <room>rooms\rmLobby</room>
     <room>rooms\rmGame</room>
   </rooms>
-  <constants number="26">
+  <constants number="27">
     <constant name="netPing">1</constant>
     <constant name="netInitialRequest">2</constant>
     <constant name="netReady">3</constant>
@@ -195,6 +203,7 @@
     <constant name="netStartGame">12</constant>
     <constant name="netPlayerNumber">13</constant>
     <constant name="netChiefPlayer">14</constant>
+    <constant name="netCard">15</constant>
     <constant name="stateLobby">100</constant>
     <constant name="stateStart">101</constant>
     <constant name="stateInitial">102</constant>

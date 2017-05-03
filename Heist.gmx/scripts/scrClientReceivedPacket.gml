@@ -91,6 +91,7 @@ switch(msgid)
             
             theif[p].currentSpace = mChosenSpace[p];
             mChosenSpace[p] = noone;
+            chosenSpace = noone;
         }
     break;
     case netConnectRooms:
@@ -102,5 +103,15 @@ switch(msgid)
         buffer_seek(buffer, buffer_seek_start,0);
         buffer_write(buffer, buffer_u8,netStartGame);
         network_send_packet(objClient.socket, objClient.buffer, buffer_tell(objClient.buffer));
+    break;
+    case netCard:
+        var pNum = buffer_read(buff, buffer_u8);
+        var cType = buffer_read(buff, buffer_u8);
+        if(pNum == playerNumber)
+        {
+            var drawnCard = instance_create(0,0,objCard);///
+            drawnCard.type = cType
+            ds_list_add(playerHand[pNum],drawnCard);
+        }
     break;
 }

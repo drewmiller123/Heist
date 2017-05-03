@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>//window_set_size(display_get_width(),display_get_height());
 display_reset(0,true);
+randomize();
 
 globalvar version;
 version = string(GM_version);
@@ -116,6 +117,24 @@ mSecurityChosenSpace[0] = noone;
 mSecurityChosenSpace[1] = noone;
 mSecurityChosenSpace[2] = noone;
 mSecurityChosenSpace[3] = noone;
+
+globalvar chiefDeck;
+chiefDeck = ds_list_create();
+
+globalvar chiefDiscard;
+chiefDiscard = ds_list_create();
+
+globalvar theifDeck;
+theifDeck = ds_list_create();
+
+globalvar theifDiscard;
+theifDiscard = ds_list_create();
+
+globalvar playerHand;
+playerHand[0] = ds_list_create();
+playerHand[1] = ds_list_create();
+playerHand[2] = ds_list_create();
+playerHand[3] = ds_list_create();
 
 globalvar chosenCard;
 chosenCard = noone;
